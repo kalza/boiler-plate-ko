@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 5000
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+
+const config = require('./config/key');
 
 const {User} = require("./models/User");
 
@@ -12,11 +14,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://kalza:1234!@boilerplate.oysvl.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI, {
     useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify:false
 }).then(() => console.log('MongoDB Connected.. '))
     .catch(err => console.log(err))
-
+   
 
 app.get('/', (req, res) => {res.send('index.js started....')})
 
