@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 
-const {User} = require("./models/User");
+const {User} = require("./models/user");
 const {auth} = require("./middleware/auth");
 //applocation/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:true}));
